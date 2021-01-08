@@ -1,0 +1,32 @@
+{
+  "name": "keeplearning",
+  "version": "1.0.0",
+  "description": "Web extension that helps limit spend on websites using anki flashcards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-webpack": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dumnicki/KeepLearning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dumnicki/KeepLearning/issues"
+  },
+  "homepage": "https://github.com/dumnicki/KeepLearning#readme",
+  "dependencies": {
+    "anki": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.127",
+    "@types/node": "^14.14.20",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "html-webpack-plugin": "^4.5.1",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}

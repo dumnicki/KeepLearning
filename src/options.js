@@ -1,0 +1,1 @@
+document.getElementById("test-url").textContent = chrome.runtime.getURL("popup.html");
