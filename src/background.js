@@ -1,5 +1,4 @@
 var anki = require("./anki");
-//var fs = require("fs");
 
 chrome.runtime.onInstalled.addListener(() => {
     console.log("installed");
@@ -10,13 +9,5 @@ chrome.runtime.onInstalled.addListener(() => {
             actions: [new chrome.declarativeContent.ShowPageAction()]           
         }])
     });*/
-    anki.test();
     
 });
-/*
-fs.readFile("Japanese_Basic_Hiragana.apkg", (err,f) => ankiRead(f));
-var ankiRead = (f) => {
-    console.log("hello");
-    console.log(anki(f).getCards());
-}
-*/

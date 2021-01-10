@@ -1,32 +1,60 @@
-//var zip = require("zip");
-//var sql = require("sql.js");
-/*
-const ankiFactory = (db) => {
-    var getCards = () => {
-        var q = db.exec("SELECT decks from col");
-        return JSON.parse(q[0].values[0][0]);
-    }
+const unzip = require("unzip-js");
+const initSql = require("sql.js");
 
-    
-
-    return {getCards};
-};
-
-
-function read(file){
-    var reader = zip.Reader(file);
-    var db;
-    reader.forEach(entry => {
-        if (entry.getName() == 'collection.anki2'){
-            var buf = entry.getData()
-            db = new sql.Database(new Uint8Array(buf))
-        }
-    });
-    return ankiFactory(db);
-}
+/** 
+ * @param {File} file
+ * @returns {Promise<JSON>}
 */
-function test(){
-    console.log("this is test");
+
+function getDeck(file){
+    return new Promise((resolve, reject) => {
+        unzip(file,(err,zipFile) => {
+            zipFile.readEntries(/**@param {Entry[]} entries */(err,entries)=>{
+                for (let entry of entries){
+                    if (entry.name == 'collection.anki2'){
+                        zipFile.readEntryData(entry,false,(err, readStream) => {
+                            databaseCreate(err, readStream).then(parseToJSON).then(resolve);
+                        });
+                        break;
+                    }
+                }
+            })
+        })
+    });
+}
+/**
+ * 
+ * @param {Database} db 
+ */
+function parseToJSON(db){
+    //TODO: parse database into json
+    
+    //db.exec();
+    return new Promise((resolve,reject)=>resolve({data: "mockJSON"}));
 }
 
-module.exports = {/*read,*/test};
+/**
+ * 
+ * @param {Error} err 
+ * @param {ReadStream} readStream 
+ */
+function databaseCreate(err, readStream){
+    return new Promise((resolve, reject) => {
+        var bufs = [];
+        readStream.on('data', (chunk) => {
+            bufs.push(chunk);
+        });
+
+        readStream.on('end', () => {
+            console.log('Data read, init sql.');
+            var buf = Buffer.concat(bufs);
+            initSql().then(function(SQL){
+                var db = new SQL.Database(new Uint8Array(buf));
+                resolve(db);
+            });
+        });
+        }
+    )
+}
+
+module.exports = {getDeck};

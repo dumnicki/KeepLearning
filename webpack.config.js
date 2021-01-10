@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -13,7 +14,8 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: "./src/manifest.json", to: "./" }
+        { from: "./src/*.json", to: "./[name].json"},
+        {from: "./node_modules/sql.js/dist/sql-wasm.wasm", to: "./"}
       ],
     }),
     new HtmlWebpackPlugin({
@@ -26,10 +28,24 @@ module.exports = {
         template: "./src/popup.html",
         chunks: []
     }),
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+      process: 'process'
+     }),
     new CleanWebpackPlugin()
   ],
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    fallback: { 
+      "zlib": require.resolve("browserify-zlib"),
+      "assert": require.resolve("assert/"),
+      "stream": require.resolve("stream-browserify"),
+      "util": require.resolve("util/"),
+      "path": require.resolve("path-browserify"),
+      "fs": require.resolve("browserify-fs")
+   }
+  }
 };

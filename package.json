@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-webpack": "webpack --watch"
+    "start-webpack": "webpack",
+    "start-webpack-watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,22 @@
   },
   "homepage": "https://github.com/dumnicki/KeepLearning#readme",
   "dependencies": {
-    "anki": "^1.0.0"
+    "anki": "^1.0.0",
+    "assert": "^2.0.0",
+    "browserify-fs": "^1.0.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "sql.js": "^1.4.0",
+    "stream-browserify": "^3.0.0",
+    "unzip-js": "^1.0.0",
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "@types/chrome": "0.0.127",
     "@types/node": "^14.14.20",
+    "@types/sql.js": "^1.0.3",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^7.0.0",
     "html-webpack-plugin": "^4.5.1",
