@@ -3,31 +3,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body{font-size: medium;}
-        ul{height:100px; width:18%;}
+        ul{height:100px; width:30%;}
+        ul{list-style-type: none; border: 1px solid rgb(71, 67, 67);}
         ul{overflow:hidden; overflow-y:scroll;}
+        li{border: 2px solid black; border-radius: 2px; margin-top: 4px;}
+        #decks-list li:hover{background-color: rgb(143, 143, 143);}
+        .selected{background-color: rgb(126, 175, 216);}
     </style>
 </head>
 <body>
     <div>
         Options
         <form>
-            number of cards to unlock page: <input type="number" title="number"> <br>
-            time until page is locked: <input type="number" title="time"> <br>
+            number of cards to unlock page: <input type="number" title="number" min="1" id="card-num-input"> <br>
+            time until page is locked: <input type="number" title="time" min="1" id="time-input"> <br>
             <div>
-                <ul>
-                    <li>deck 1 <i class="fa-pull-right fa fa-trash"></i></li>
-                    <li>deck 2 <i class="fa-pull-right fa fa-trash"></i></li>
-                    <li>deck 3 <i class="fa-pull-right fa fa-trash"></i></li>
-                    <li>deck 4 <i class="fa-pull-right fa fa-trash"></i></li>
-                    <li>deck 5 <i class="fa-pull-right fa fa-trash"></i></li>
-                    <li>deck 6</li> 
-                    <li>deck 7</li> 
-                    <li>deck 8</li>
-                    <li>deck 9</li>
-                    <li>deck 10</li>
-                    <li>deck 11</li>
-                    <li>deck 13</li>
-                    <li>deck 13</li>
+                <ul id="decks-list">
+                    <li id="deck.1">deck 1 <i class="fa-pull-right fa fa-trash"></i></li>
+                    <li id="deck.2">deck 2 <i class="fa-pull-right fa fa-trash"></i></li>
+                    <li id="deck.3">deck 3 <i class="fa-pull-right fa fa-trash"></i></li>
                 </ul>
                 <button id="import-btn"><i class="fa fa-upload fa-lg fa-border"></i></button>
                 <input type="file" id="file-elem" accept=".apkg" style="display: none;">
@@ -37,16 +31,6 @@
                     <li>website 1 <i id="test-url" class="fa fa-times-circle fa-pull-right"></i></li>
                     <li>website 2 <i class="fa fa-times-circle fa-pull-right"></i></li>
                     <li>website 3 <i class="fa fa-times-circle fa-pull-right"></i></li>
-                    <li>website 4</li>
-                    <li>website 5</li>
-                    <li>website 6</li> 
-                    <li>website 7</li> 
-                    <li>website 8</li>
-                    <li>website 9</li>
-                    <li>website 10</li>
-                    <li>website 11</li>
-                    <li>website 13</li>
-                    <li>website 13</li>
                 </ul>
                 <i class="fa fa-plus-circle"></i>
             </div>

@@ -72,7 +72,7 @@ function getDeck(file){
 }
 /**
  * 
- * @param {Database} db 
+ * @param {import('sql.js/module').SqlJs.Database} db 
  */
 function parseDatabase(db){
     const col = db.exec("SELECT models,decks FROM col")[0];
