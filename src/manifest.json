@@ -2,7 +2,7 @@
     "name": "KeepLearning",
     "version": "1.0",
     "description": "Extension",
-    "permissions": ["declarativeContent","storage"],
+    "permissions": ["storage","tabs","<all_urls>"],
     "background": {
       "scripts": ["background.js"],
       "persistent": false

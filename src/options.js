@@ -64,7 +64,7 @@ function onDeckSelect(event){
   var element = event.target;
   console.log("click");
   selectDeck(element);
-  updateSelectedDeck(element.id.split('.')[1]);
+  updateSelectedDeck(Number.parseInt(element.id.split('.')[1]));
 }
 
 function selectDeck(element){
@@ -88,7 +88,7 @@ function loadSelectedDeck(){
       let child = decksList.firstElementChild;
       if(child){
         selectDeck(child);
-        updateSelectedDeck(child.id.split('.')[1]);
+        updateSelectedDeck(Number.parseInt(child.id.split('.')[1]));
       }
     }
   });

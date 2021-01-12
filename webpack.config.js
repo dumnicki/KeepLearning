@@ -8,14 +8,16 @@ module.exports = {
   mode: 'development',
   entry: {
     background: './src/background.js',
-    options: './src/options.js'
+    options: './src/options.js',
+    popup: './src/popup.js'
   },
   devtool: 'inline-source-map',
   plugins: [
     new CopyPlugin({
       patterns: [
         { from: "./src/*.json", to: "./[name].json"},
-        {from: "./node_modules/sql.js/dist/sql-wasm.wasm", to: "./"}
+        {from: "./node_modules/sql.js/dist/sql-wasm.wasm", to: "./"},
+        {from: "./src/inject.js", to: "./"}
       ],
     }),
     new HtmlWebpackPlugin({
@@ -26,7 +28,7 @@ module.exports = {
     new HtmlWebpackPlugin({
         filename: "popup.html",
         template: "./src/popup.html",
-        chunks: []
+        chunks: ["popup"]
     }),
     new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer'],
