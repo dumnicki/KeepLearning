@@ -30,7 +30,7 @@ chrome.runtime.onSuspend.addListener(()=>console.log("suspended"));
 
 chrome.storage.onChanged.addListener(detectStorageChange);
 
-chrome.runtime.onMessage.addListener((message, sender) => {
+chrome.runtime.onMessage.addListener((message, sender, respond) => {
     console.log("message recieved");
     if(message === "displayCard") displayCard();
     else console.log(message);

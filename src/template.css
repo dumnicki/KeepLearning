@@ -1,0 +1,45 @@
+.kl-blur {
+  filter: blur(2px);
+}
+html.no-scroll {
+  overflow-y: hidden;
+}
+
+.kl-overlay * {
+  all: revert;
+}
+.kl-overlay {
+  filter: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #00000073;
+  z-index: 2147483647;
+}
+.kl-container {
+  position: relative;
+  margin: 0 auto;
+  min-width: 365px;
+  width: 30%;
+  padding-top: max(30%, 365px);
+  top: 10%;
+  transition: all 0.8s cubic-bezier(0.8, -0.4, 0.2, 1.7);
+  transform-style: preserve-3d;
+}
+.kl-card {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  top: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 15px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.kl-card-back {
+  transform: rotateY(-180deg);
+  display: none;
+}

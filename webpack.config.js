@@ -9,15 +9,15 @@ module.exports = {
   entry: {
     background: './src/background.js',
     options: './src/options.js',
-    popup: './src/popup.js'
+    popup: './src/popup.js',
+    inject: './src/inject.js'
   },
   devtool: 'inline-source-map',
   plugins: [
     new CopyPlugin({
       patterns: [
         { from: "./src/*.json", to: "./[name].json"},
-        {from: "./node_modules/sql.js/dist/sql-wasm.wasm", to: "./"},
-        {from: "./src/inject.js", to: "./"}
+        {from: "./node_modules/sql.js/dist/sql-wasm.wasm", to: "./"}
       ],
     }),
     new HtmlWebpackPlugin({
@@ -49,5 +49,16 @@ module.exports = {
       "path": require.resolve("path-browserify"),
       "fs": require.resolve("browserify-fs")
    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        loader: "css-loader",
+        options: {
+          esModule: false
+        }
+      },
+    ],
   }
 };
